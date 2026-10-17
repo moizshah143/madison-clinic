@@ -1,0 +1,922 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Madison Multi-Specialty Clinic</title>
+    
+ 
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+ 
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            overflow-x: hidden;
+        }
+
+        :root {
+            --primary: #2c7da0;
+            --secondary: #61a5c2;
+            --dark: #1f3e48;
+            --light: #e0fbfc;
+            --accent: #ee6c4d;
+            --success: #2a9d8f;
+            --gradient: linear-gradient(135deg, var(--primary), var(--secondary));
+            --gradient-accent: linear-gradient(135deg, var(--accent), #e76f51);
+        }
+
+      
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+        ::-webkit-scrollbar-track {
+            background: var(--light);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: var(--primary);
+            border-radius: 10px;
+        }
+
+       
+        .navbar {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            padding: 15px 0;
+        }
+
+        .navbar.scrolled {
+            padding: 10px 0;
+            background: white !important;
+            box-shadow: 0 5px 30px rgba(0,0,0,0.15);
+        }
+
+        .navbar-brand {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--primary);
+            letter-spacing: -0.5px;
+        }
+
+        .navbar-brand span {
+            color: var(--accent);
+        }
+
+        .nav-link {
+            font-weight: 500;
+            margin: 0 12px;
+            transition: all 0.3s;
+            position: relative;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent);
+            transition: width 0.3s;
+        }
+
+        .nav-link:hover::after,
+        .nav-link.active::after {
+            width: 100%;
+        }
+
+        .nav-link:hover {
+            color: var(--accent) !important;
+        }
+
+        .nav-link.active {
+            color: var(--accent) !important;
+            font-weight: 600;
+        }
+
+        .emergency-btn {
+            background: #dc3545;
+            color: white;
+            padding: 10px 25px;
+            border-radius: 50px;
+            font-weight: 600;
+            animation: pulse 2s infinite;
+            transition: all 0.3s;
+        }
+
+        .emergency-btn:hover {
+            background: #c82333;
+            color: white;
+            transform: scale(1.05);
+        }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(220, 53, 69, 0.7); }
+            70% { box-shadow: 0 0 0 15px rgba(220, 53, 69, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(220, 53, 69, 0); }
+        }
+
+        .page-header {
+            background: var(--gradient);
+            color: white;
+            padding: 120px 0 80px;
+            margin-top: 76px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .page-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="rgba(255,255,255,0.1)" d="M0,96L48,112C96,128,192,160,288,160C384,160,480,128,576,122.7C672,117,768,139,864,154.7C960,171,1056,181,1152,165.3C1248,149,1344,107,1392,85.3L1440,64L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>') no-repeat bottom;
+            background-size: cover;
+            opacity: 0.3;
+        }
+
+        .page-header h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+        }
+
+        .page-header p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+      
+        .contact-info-section {
+            padding: 60px 0;
+        }
+
+        .info-card {
+            background: white;
+            padding: 35px 25px;
+            border-radius: 20px;
+            text-align: center;
+            transition: all 0.4s;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            margin-bottom: 30px;
+            height: 100%;
+        }
+
+        .info-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+
+        .info-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--gradient);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+        }
+
+        .info-icon i {
+            font-size: 2.5rem;
+            color: white;
+        }
+
+        .info-card h3 {
+            color: var(--dark);
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        .info-card p {
+            color: #555;
+            margin-bottom: 5px;
+            line-height: 1.6;
+        }
+
+        .info-card .small-text {
+            font-size: 0.85rem;
+            color: #888;
+        }
+
+        .contact-form-section {
+            padding: 60px 0;
+            background: #f8f9fa;
+        }
+
+        .form-card {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+        }
+
+        .form-card h2 {
+            color: var(--dark);
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .form-card .form-subtitle {
+            color: #666;
+            margin-bottom: 30px;
+        }
+
+        .form-control, .form-select {
+            padding: 12px 15px;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            border: 1px solid #ddd;
+            transition: all 0.3s;
+        }
+
+        .form-control:focus, .form-select:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(44, 125, 160, 0.2);
+        }
+
+        textarea.form-control {
+            resize: vertical;
+        }
+
+        .btn-submit {
+            background: var(--gradient);
+            color: white;
+            padding: 14px 30px;
+            border: none;
+            border-radius: 50px;
+            font-weight: 600;
+            width: 100%;
+            transition: all 0.3s;
+        }
+
+        .btn-submit:hover {
+            background: var(--gradient-accent);
+            transform: scale(1.02);
+        }
+
+      
+        .hours-card {
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+        }
+
+        .hours-card h3 {
+            color: var(--primary);
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .hours-table {
+            width: 100%;
+        }
+
+        .hours-table tr {
+            border-bottom: 1px solid #eee;
+        }
+
+        .hours-table td {
+            padding: 12px 0;
+        }
+
+        .hours-table td:first-child {
+            font-weight: 600;
+            color: var(--dark);
+        }
+
+        .hours-table td:last-child {
+            color: #555;
+        }
+
+        .emergency-hours {
+            background: #fff3f3;
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .emergency-hours i {
+            color: #dc3545;
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+
+        
+        .map-section {
+            padding: 0;
+        }
+
+        .map-container {
+            width: 100%;
+            height: 450px;
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+                .faq-section {
+            padding: 80px 0;
+            background: #f8f9fa;
+        }
+
+        .faq-card {
+            background: white;
+            border-radius: 15px;
+            margin-bottom: 20px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+
+        .faq-question {
+            padding: 20px 25px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.3s;
+        }
+
+        .faq-question:hover {
+            background: #f8f9fa;
+        }
+
+        .faq-question h4 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--dark);
+            margin: 0;
+        }
+
+        .faq-question i {
+            color: var(--primary);
+            transition: all 0.3s;
+        }
+
+        .faq-answer {
+            padding: 0 25px;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            background: #fafafa;
+        }
+
+        .faq-answer p {
+            padding: 0 0 20px 0;
+            color: #555;
+            margin: 0;
+        }
+
+        .faq-card.active .faq-answer {
+            max-height: 200px;
+        }
+
+        .faq-card.active .faq-question i {
+            transform: rotate(180deg);
+        }
+
+       .social-section {
+            padding: 60px 0;
+        }
+
+        .social-card {
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            text-align: center;
+            transition: all 0.3s;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+        }
+
+        .social-icon {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+        }
+
+        .social-icon.facebook {
+            background: #1877f2;
+        }
+        .social-icon.instagram {
+            background: #e4405f;
+        }
+        .social-icon.twitter {
+            background: #1da1f2;
+        }
+        .social-icon.linkedin {
+            background: #0a66c2;
+        }
+
+        .social-icon i {
+            font-size: 2rem;
+            color: white;
+        }
+
+        .social-card h4 {
+            color: var(--dark);
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .social-link {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .social-link:hover {
+            color: var(--accent);
+        }
+
+       
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 60px 0 30px;
+        }
+
+       
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: var(--accent);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 1000;
+            transition: all 0.3s;
+        }
+
+        .back-to-top:hover {
+            background: var(--primary);
+            transform: scale(1.1);
+        }
+
+      
+        .live-chat {
+            position: fixed;
+            bottom: 30px;
+            left: 30px;
+            background: #25D366;
+            color: white;
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 1000;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+            transition: all 0.3s;
+            animation: pulse 2s infinite;
+        }
+
+        .live-chat:hover {
+            transform: scale(1.1);
+        }
+
+        .live-chat i {
+            font-size: 1.8rem;
+        }
+
+
+        .contact-notification {
+            position: fixed;
+            top: 100px;
+            right: 20px;
+            background: var(--success);
+            color: white;
+            padding: 15px 25px;
+            border-radius: 10px;
+            display: none;
+            z-index: 9999;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+            animation: slideIn 0.3s ease;
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .page-header h1 { font-size: 2rem; }
+            .form-card { padding: 25px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="live-chat" onclick="window.open('https://wa.me/16085551234', '_blank')">
+        <i class="fab fa-whatsapp"></i>
+    </div>
+
+
+    <div class="contact-notification" id="contactNotification">
+        <i class="fas fa-check-circle"></i> Message sent successfully! We'll get back to you soon.
+    </div>
+
+
+    <div class="back-to-top" id="backToTop">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+
+
+    <nav class="navbar navbar-expand-lg fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">Madicine<span>Clinic</span></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="services.html">Services</a></li>
+                    <li class="nav-item"><a class="nav-link" href="products.html">Products</a></li>
+                    <li class="nav-item"><a class="nav-link" href="doctors.html">Doctors</a></li>
+                    <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="contact.html">Contact</a></li>
+                </ul>
+                <a href="tel:+16085551234" class="btn emergency-btn ms-3">
+                    <i class="fas fa-phone-alt"></i> 24/7 Emergency
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    
+    <section class="page-header">
+        <div class="container">
+            <h1 data-aos="fade-up">Contact Us</h1>
+            <p data-aos="fade-up" data-aos-delay="100">We'd love to hear from you. Get in touch with our team today!</p>
+        </div>
+    </section>
+
+  
+    <section class="contact-info-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+                    <div class="info-card">
+                        <div class="info-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <h3>Visit Us</h3>
+                        <p>123 Medical Avenue</p>
+                        <p>Downtown Madison, WI 53703</p>
+                        <p>United States</p>
+                        <div class="small-text mt-2">
+                            <i class="fas fa-building"></i> Near UW Hospital & Capitol Square
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="150">
+                    <div class="info-card">
+                        <div class="info-icon">
+                            <i class="fas fa-phone-alt"></i>
+                        </div>
+                        <h3>Call Us</h3>
+                        <p><strong>Emergency:</strong> +1 (608) 555-0123</p>
+                        <p><strong>Appointments:</strong> +1 (608) 555-0124</p>
+                        <p><strong>WhatsApp:</strong> +1 (608) 555-0125</p>
+                        <div class="small-text mt-2">
+                            <i class="fas fa-clock"></i> Available 24/7 for emergencies
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="info-card">
+                        <div class="info-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <h3>Email Us</h3>
+                        <p><strong>General:</strong> info@madisonclinic.com</p>
+                        <p><strong>Appointments:</strong> book@madisonclinic.com</p>
+                        <p><strong>Support:</strong> support@madisonclinic.com</p>
+                        <div class="small-text mt-2">
+                            <i class="fas fa-reply"></i> We reply within 24 hours
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="contact-form-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-7" data-aos="fade-right">
+                    <div class="form-card">
+                        <h2>Send Us a Message</h2>
+                        <p class="form-subtitle">Have questions? Fill out the form and we'll get back to you shortly.</p>
+                        <form id="contactForm">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <input type="text" class="form-control" placeholder="Your Full Name" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <input type="email" class="form-control" placeholder="Email Address" required>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <input type="tel" class="form-control" placeholder="Phone Number">
+                                </div>
+                                <div class="col-md-6">
+                                    <select class="form-select">
+                                        <option>How did you hear about us?</option>
+                                        <option>Google Search</option>
+                                        <option>Social Media</option>
+                                        <option>Friend/Family</option>
+                                        <option>Advertisement</option>
+                                        <option>Other</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <select class="form-select">
+                                <option>Subject - Select One</option>
+                                <option>Appointment Booking</option>
+                                <option>General Inquiry</option>
+                                <option>Feedback/Suggestion</option>
+                                <option>Complaint</option>
+                                <option>Partnership Opportunity</option>
+                            </select>
+                            <textarea class="form-control" rows="5" placeholder="Your Message..."></textarea>
+                            <button type="submit" class="btn-submit">Send Message <i class="fas fa-paper-plane"></i></button>
+                        </form>
+                        <div id="contactFormMessage" class="mt-3 text-center"></div>
+                    </div>
+                </div>
+                <div class="col-lg-5" data-aos="fade-left">
+                    <div class="hours-card">
+                        <h3><i class="fas fa-clock"></i> Working Hours</h3>
+                        <table class="hours-table">
+                            <tr>
+                                <td>Monday - Friday</td>
+                                <td>9:00 AM - 8:00 PM</td>
+                            </tr>
+                            <tr>
+                                <td>Saturday</td>
+                                <td>9:00 AM - 6:00 PM</td>
+                            </tr>
+                            <tr>
+                                <td>Sunday</td>
+                                <td>Closed (Emergency Only)</td>
+                            </tr>
+                            <tr>
+                                <td>Emergency</td>
+                                <td>24/7 Available</td>
+                            </tr>
+                        </table>
+                        <div class="emergency-hours">
+                            <i class="fas fa-ambulance"></i>
+                            <h5>Emergency Services</h5>
+                            <p>Available 24 hours a day, 7 days a week</p>
+                            <a href="tel:+16085551234" style="color: #dc3545; font-weight: 600; text-decoration: none;">Call Emergency: +1 (608) 555-0123</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <section class="map-section">
+        <div class="map-container" data-aos="fade-up">
+            <iframe 
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2916.123456789012!2d-89.384!3d43.073!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8806533ac3b5b5b5%3A0x4b4b4b4b4b4b4b4b!2sMadison%2C%20WI!5e0!3m2!1sen!2sus!4v1234567890123!5m2!1sen!2sus" 
+                allowfullscreen="" 
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+        </div>
+    </section>
+
+   
+    <section class="faq-section">
+        <div class="container">
+            <h2 class="text-center mb-5" style="font-size: 2.5rem; font-weight: 800; color: var(--dark);" data-aos="fade-up">Frequently Asked Questions</h2>
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="faq-card" data-aos="fade-up" data-aos-delay="100">
+                        <div class="faq-question" onclick="toggleFaq(this)">
+                            <h4>How do I book an appointment?</h4>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>You can book an appointment online through our website by clicking the "Book Appointment" button, call us at +1 (608) 555-0124, or visit our clinic in person. We recommend booking in advance to secure your preferred time slot.</p>
+                        </div>
+                    </div>
+                    <div class="faq-card" data-aos="fade-up" data-aos-delay="150">
+                        <div class="faq-question" onclick="toggleFaq(this)">
+                            <h4>What insurance plans do you accept?</h4>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>We accept all major insurance plans including Medicare, Medicaid, Blue Cross Blue Shield, United Healthcare, Aetna, Cigna, and many others. Please contact our billing department for specific questions about your insurance coverage.</p>
+                        </div>
+                    </div>
+                    <div class="faq-card" data-aos="fade-up" data-aos-delay="200">
+                        <div class="faq-question" onclick="toggleFaq(this)">
+                            <h4>Do you offer telemedicine services?</h4>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Yes, we offer telemedicine consultations for select services. You can have a virtual visit with our doctors from the comfort of your home. Please call our office to schedule a telemedicine appointment.</p>
+                        </div>
+                    </div>
+                    <div class="faq-card" data-aos="fade-up" data-aos-delay="250">
+                        <div class="faq-question" onclick="toggleFaq(this)">
+                            <h4>What should I bring to my first appointment?</h4>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Please bring your insurance card, photo ID, list of current medications, relevant medical records, and any questions you may have for the doctor. Arrive 15 minutes early to complete paperwork.</p>
+                        </div>
+                    </div>
+                    <div class="faq-card" data-aos="fade-up" data-aos-delay="300">
+                        <div class="faq-question" onclick="toggleFaq(this)">
+                            <h4>Is parking available at the clinic?</h4>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Yes, we have a dedicated parking lot for patients with free parking. There is also street parking available nearby. The clinic is wheelchair accessible.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    
+    <section class="social-section">
+        <div class="container">
+            <h2 class="text-center mb-5" style="font-size: 2.5rem; font-weight: 800; color: var(--dark);" data-aos="fade-up">Connect With Us</h2>
+            <div class="row">
+                <div class="col-md-3 col-6" data-aos="fade-up" data-aos-delay="100">
+                    <div class="social-card">
+                        <div class="social-icon facebook">
+                            <i class="fab fa-facebook-f"></i>
+                        </div>
+                        <h4>Facebook</h4>
+                        <a href="#" class="social-link">Follow Us →</a>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6" data-aos="fade-up" data-aos-delay="150">
+                    <div class="social-card">
+                        <div class="social-icon instagram">
+                            <i class="fab fa-instagram"></i>
+                        </div>
+                        <h4>Instagram</h4>
+                        <a href="#" class="social-link">Follow Us →</a>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6" data-aos="fade-up" data-aos-delay="200">
+                    <div class="social-card">
+                        <div class="social-icon twitter">
+                            <i class="fab fa-twitter"></i>
+                        </div>
+                        <h4>Twitter</h4>
+                        <a href="#" class="social-link">Follow Us →</a>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6" data-aos="fade-up" data-aos-delay="250">
+                    <div class="social-card">
+                        <div class="social-icon linkedin">
+                            <i class="fab fa-linkedin-in"></i>
+                        </div>
+                        <h4>LinkedIn</h4>
+                        <a href="#" class="social-link">Follow Us →</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+   
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <h3 class="mb-3">Madison<span style="color: var(--accent);">Clinic</span></h3>
+                    <p>Your trusted healthcare partner in Madison, Wisconsin since 2010. Providing quality medical care with compassion and excellence.</p>
+                    <div class="mt-3">
+                        <a href="#" class="text-white me-3"><i class="fab fa-facebook fa-lg"></i></a>
+                        <a href="#" class="text-white me-3"><i class="fab fa-instagram fa-lg"></i></a>
+                        <a href="#" class="text-white me-3"><i class="fab fa-twitter fa-lg"></i></a>
+                        <a href="#" class="text-white"><i class="fab fa-linkedin fa-lg"></i></a>
+                    </div>
+                </div>
+                <div class="col-md-2 mb-4">
+                    <h5>Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="index.html" class="text-white text-decoration-none">Home</a></li>
+                        <li><a href="services.html" class="text-white text-decoration-none">Services</a></li>
+                        <li><a href="products.html" class="text-white text-decoration-none">Products</a></li>
+                        <li><a href="doctors.html" class="text-white text-decoration-none">Doctors</a></li>
+                        <li><a href="about.html" class="text-white text-decoration-none">About</a></li>
+                        <li><a href="contact.html" class="text-white text-decoration-none">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3 mb-4">
+                    <h5>Working Hours</h5>
+                    <p>Mon-Sat: 9AM - 8PM<br>Sunday: Closed<br>Emergency: 24/7</p>
+                </div>
+                <div class="col-md-3 mb-4">
+                    <h5>Contact Info</h5>
+                    <p><i class="fas fa-phone"></i> +1 (608) 555-0123<br>
+                    <i class="fas fa-envelope"></i> info@madisonclinic.com<br>
+                    <i class="fas fa-map-marker-alt"></i> 123 Medical Avenue, Madison, WI</p>
+                </div>
+            </div>
+            <hr class="mt-3">
+            <p class="text-center mb-0">&copy; 2024 Madison Multi-Specialty Clinic, Madison, Wisconsin. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        
+        AOS.init({
+            duration: 800,
+            once: true
+        });
+
+    
+        function toggleFaq(element) {
+            const card = element.closest('.faq-card');
+            card.classList.toggle('active');
+        }
+
+        $(document).ready(function() {
+            // Navbar scroll effect
+            $(window).scroll(function() {
+                if ($(this).scrollTop() > 50) {
+                    $('.navbar').addClass('scrolled');
+                    $('#backToTop').fadeIn();
+                } else {
+                    $('.navbar').removeClass('scrolled');
+                    $('#backToTop').fadeOut();
+                }
+            });
+
+            $('#backToTop').click(function() {
+                $('html, body').animate({scrollTop: 0}, 500);
+            });
+
+          
+            $('#contactForm').submit(function(e) {
+                e.preventDefault();
+                $('#contactNotification').fadeIn();
+                this.reset();
+                setTimeout(function() {
+                    $('#contactNotification').fadeOut();
+                }, 3000);
+            });
+        });
+    </script>
+</body>
+</html>

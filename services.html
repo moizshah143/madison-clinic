@@ -1,0 +1,764 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Services - Madison Multi-Specialty Clinic</title>
+    
+  
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            overflow-x: hidden;
+        }
+
+        :root {
+            --primary: #2c7da0;
+            --secondary: #61a5c2;
+            --dark: #1f3e48;
+            --light: #e0fbfc;
+            --accent: #ee6c4d;
+            --success: #2a9d8f;
+            --gradient: linear-gradient(135deg, var(--primary), var(--secondary));
+            --gradient-accent: linear-gradient(135deg, var(--accent), #e76f51);
+        }
+
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+        ::-webkit-scrollbar-track {
+            background: var(--light);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: var(--primary);
+            border-radius: 10px;
+        }
+
+    
+        .navbar {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            padding: 15px 0;
+        }
+
+        .navbar.scrolled {
+            padding: 10px 0;
+            background: white !important;
+            box-shadow: 0 5px 30px rgba(0,0,0,0.15);
+        }
+
+        .navbar-brand {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--primary);
+            letter-spacing: -0.5px;
+        }
+
+        .navbar-brand span {
+            color: var(--accent);
+        }
+
+        .nav-link {
+            font-weight: 500;
+            margin: 0 12px;
+            transition: all 0.3s;
+            position: relative;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent);
+            transition: width 0.3s;
+        }
+
+        .nav-link:hover::after,
+        .nav-link.active::after {
+            width: 100%;
+        }
+
+        .nav-link:hover {
+            color: var(--accent) !important;
+        }
+
+        .nav-link.active {
+            color: var(--accent) !important;
+            font-weight: 600;
+        }
+
+        .emergency-btn {
+            background: #dc3545;
+            color: white;
+            padding: 10px 25px;
+            border-radius: 50px;
+            font-weight: 600;
+            animation: pulse 2s infinite;
+            transition: all 0.3s;
+        }
+
+        .emergency-btn:hover {
+            background: #c82333;
+            color: white;
+            transform: scale(1.05);
+        }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(220, 53, 69, 0.7); }
+            70% { box-shadow: 0 0 0 15px rgba(220, 53, 69, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(220, 53, 69, 0); }
+        }
+
+        
+        .page-header {
+            background: var(--gradient);
+            color: white;
+            padding: 120px 0 80px;
+            margin-top: 76px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .page-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="rgba(255,255,255,0.1)" d="M0,96L48,112C96,128,192,160,288,160C384,160,480,128,576,122.7C672,117,768,139,864,154.7C960,171,1056,181,1152,165.3C1248,149,1344,107,1392,85.3L1440,64L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>') no-repeat bottom;
+            background-size: cover;
+            opacity: 0.3;
+        }
+
+        .page-header h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+        }
+
+        .page-header p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Service Details Section */
+        .service-details {
+            padding: 80px 0;
+        }
+
+        .service-item {
+            margin-bottom: 60px;
+        }
+
+        .service-card-large {
+            background: white;
+            border-radius: 25px;
+            overflow: hidden;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+            transition: all 0.4s;
+        }
+
+        .service-card-large:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.15);
+        }
+
+        .service-img {
+            background: var(--gradient);
+            padding: 50px;
+            text-align: center;
+        }
+
+        .service-img i {
+            font-size: 5rem;
+            color: white;
+        }
+
+        .service-content {
+            padding: 30px;
+        }
+
+        .service-content h3 {
+            color: var(--primary);
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .service-description {
+            color: #555;
+            line-height: 1.7;
+            margin-bottom: 20px;
+        }
+
+        .feature-list {
+            list-style: none;
+            padding: 0;
+            margin-bottom: 25px;
+        }
+
+        .feature-list li {
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .feature-list li i {
+            color: var(--accent);
+            font-size: 1.2rem;
+        }
+
+        .btn-book-service {
+            background: var(--primary);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s;
+            font-weight: 600;
+        }
+
+        .btn-book-service:hover {
+            background: var(--accent);
+            color: white;
+            transform: scale(1.05);
+        }
+
+     
+        .why-choose-us {
+            padding: 80px 0;
+            background: #f8f9fa;
+        }
+
+        .benefit-card {
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            text-align: center;
+            transition: all 0.4s;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            margin-bottom: 30px;
+        }
+
+        .benefit-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .benefit-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--gradient);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+        }
+
+        .benefit-icon i {
+            font-size: 2.5rem;
+            color: white;
+        }
+
+        .benefit-card h4 {
+            color: var(--dark);
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+       
+        .cta-section {
+            padding: 80px 0;
+            background: var(--gradient);
+            color: white;
+            text-align: center;
+        }
+
+        .cta-section h2 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+        }
+
+        .btn-cta {
+            background: white;
+            color: var(--primary);
+            padding: 15px 40px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            display: inline-block;
+            transition: all 0.3s;
+            margin-top: 20px;
+        }
+
+        .btn-cta:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+      
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 60px 0 30px;
+        }
+
+     
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: var(--accent);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 1000;
+            transition: all 0.3s;
+        }
+
+        .back-to-top:hover {
+            background: var(--primary);
+            transform: scale(1.1);
+        }
+
+      
+        .live-chat {
+            position: fixed;
+            bottom: 30px;
+            left: 30px;
+            background: #25D366;
+            color: white;
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 1000;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+            transition: all 0.3s;
+            animation: pulse 2s infinite;
+        }
+
+        .live-chat:hover {
+            transform: scale(1.1);
+        }
+
+        .live-chat i {
+            font-size: 1.8rem;
+        }
+
+        @media (max-width: 768px) {
+            .page-header h1 { font-size: 2rem; }
+            .service-content h3 { font-size: 1.5rem; }
+            .cta-section h2 { font-size: 1.8rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="live-chat" onclick="window.open('https://wa.me/16085551234', '_blank')">
+        <i class="fab fa-whatsapp"></i>
+    </div>
+
+    <div class="back-to-top" id="backToTop">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+
+    <nav class="navbar navbar-expand-lg fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">Madicine<span>Clinic</span></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="services.html">Services</a></li>
+                    <li class="nav-item"><a class="nav-link" href="products.html">Products</a></li>
+                    <li class="nav-item"><a class="nav-link" href="doctors.html">Doctors</a></li>
+                    <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+                </ul>
+                <a href="tel:+16085551234" class="btn emergency-btn ms-3">
+                    <i class="fas fa-phone-alt"></i> 24/7 Emergency
+                </a>
+            </div>
+        </div>
+    </nav>
+
+  
+    <section class="page-header">
+        <div class="container">
+            <h1 data-aos="fade-up">Our Medical Services</h1>
+            <p data-aos="fade-up" data-aos-delay="100">Comprehensive healthcare services tailored to your needs</p>
+        </div>
+    </section>
+
+    <section class="service-details">
+        <div class="container">
+          
+            <div class="service-item" data-aos="fade-up">
+                <div class="row align-items-center">
+                    <div class="col-lg-5">
+                        <div class="service-card-large">
+                            <div class="service-img">
+                                <i class="fas fa-stethoscope"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-7">
+                        <div class="service-content">
+                            <h3>General Physician & Family Medicine</h3>
+                            <p class="service-description">Our General Physicians provide comprehensive primary care for individuals and families. From routine checkups to managing chronic conditions, we're here for all your healthcare needs.</p>
+                            <ul class="feature-list">
+                                <li><i class="fas fa-check-circle"></i> Annual Physical Examinations</li>
+                                <li><i class="fas fa-check-circle"></i> Chronic Disease Management (Diabetes, Hypertension)</li>
+                                <li><i class="fas fa-check-circle"></i> Preventive Health Screenings</li>
+                                <li><i class="fas fa-check-circle"></i> Vaccinations & Immunizations</li>
+                                <li><i class="fas fa-check-circle"></i> Minor Emergency Treatment</li>
+                            </ul>
+                            <a href="index.html#appointment" class="btn-book-service">Book Appointment <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+         
+            <div class="service-item" data-aos="fade-up">
+                <div class="row align-items-center flex-row-reverse">
+                    <div class="col-lg-5">
+                        <div class="service-card-large">
+                            <div class="service-img">
+                                <i class="fas fa-tooth"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-7">
+                        <div class="service-content">
+                            <h3>Dental Care & Oral Health</h3>
+                            <p class="service-description">Complete dental solutions for the whole family. Our experienced dentists use modern technology to ensure your smile stays healthy and bright.</p>
+                            <ul class="feature-list">
+                                <li><i class="fas fa-check-circle"></i> Teeth Cleaning & Whitening</li>
+                                <li><i class="fas fa-check-circle"></i> Root Canal Treatment</li>
+                                <li><i class="fas fa-check-circle"></i> Dental Implants & Crowns</li>
+                                <li><i class="fas fa-check-circle"></i> Orthodontics (Braces)</li>
+                                <li><i class="fas fa-check-circle"></i> Pediatric Dentistry</li>
+                            </ul>
+                            <a href="index.html#appointment" class="btn-book-service">Book Appointment <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+      
+            <div class="service-item" data-aos="fade-up">
+                <div class="row align-items-center">
+                    <div class="col-lg-5">
+                        <div class="service-card-large">
+                            <div class="service-img">
+                                <i class="fas fa-allergies"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-7">
+                        <div class="service-content">
+                            <h3>Skin & Dermatology</h3>
+                            <p class="service-description">Expert care for all skin, hair, and nail conditions. Our dermatologists provide advanced treatments for both medical and cosmetic concerns.</p>
+                            <ul class="feature-list">
+                                <li><i class="fas fa-check-circle"></i> Acne & Scar Treatment</li>
+                                <li><i class="fas fa-check-circle"></i> Laser Hair Removal & Skin Rejuvenation</li>
+                                <li><i class="fas fa-check-circle"></i> Skin Cancer Screening</li>
+                                <li><i class="fas fa-check-circle"></i> Eczema, Psoriasis & Rosacea</li>
+                                <li><i class="fas fa-check-circle"></i> Anti-aging Treatments</li>
+                            </ul>
+                            <a href="index.html#appointment" class="btn-book-service">Book Appointment <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+      
+            <div class="service-item" data-aos="fade-up">
+                <div class="row align-items-center flex-row-reverse">
+                    <div class="col-lg-5">
+                        <div class="service-card-large">
+                            <div class="service-img">
+                                <i class="fas fa-child"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-7">
+                        <div class="service-content">
+                            <h3>Child Care & Pediatrics</h3>
+                            <p class="service-description">Specialized pediatric care for children from birth to adolescence. Our pediatricians ensure your child grows up healthy and strong.</p>
+                            <ul class="feature-list">
+                                <li><i class="fas fa-check-circle"></i> Newborn & Infant Care</li>
+                                <li><i class="fas fa-check-circle"></i> Childhood Vaccinations</li>
+                                <li><i class="fas fa-check-circle"></i> Growth & Development Monitoring</li>
+                                <li><i class="fas fa-check-circle"></i> Treatment of Childhood Illnesses</li>
+                                <li><i class="fas fa-check-circle"></i> Nutritional Counseling</li>
+                            </ul>
+                            <a href="index.html#appointment" class="btn-book-service">Book Appointment <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        
+            <div class="service-item" data-aos="fade-up">
+                <div class="row align-items-center">
+                    <div class="col-lg-5">
+                        <div class="service-card-large">
+                            <div class="service-img">
+                                <i class="fas fa-female"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-7">
+                        <div class="service-content">
+                            <h3>Women's Health & Gynecology</h3>
+                            <p class="service-description">Comprehensive healthcare services for women of all ages. From adolescence to menopause, we provide compassionate, expert care.</p>
+                            <ul class="feature-list">
+                                <li><i class="fas fa-check-circle"></i> Prenatal & Postnatal Care</li>
+                                <li><i class="fas fa-check-circle"></i> Family Planning & Contraception</li>
+                                <li><i class="fas fa-check-circle"></i> Menopause Management</li>
+                                <li><i class="fas fa-check-circle"></i> Breast & Cervical Cancer Screening</li>
+                                <li><i class="fas fa-check-circle"></i> Infertility Evaluation</li>
+                            </ul>
+                            <a href="index.html#appointment" class="btn-book-service">Book Appointment <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+       
+            <div class="service-item" data-aos="fade-up">
+                <div class="row align-items-center flex-row-reverse">
+                    <div class="col-lg-5">
+                        <div class="service-card-large">
+                            <div class="service-img">
+                                <i class="fas fa-eye"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-7">
+                        <div class="service-content">
+                            <h3>Eye Care & Ophthalmology</h3>
+                            <p class="service-description">Complete eye care services to protect your vision. Our ophthalmologists provide expert diagnosis and treatment for all eye conditions.</p>
+                            <ul class="feature-list">
+                                <li><i class="fas fa-check-circle"></i> Comprehensive Eye Examinations</li>
+                                <li><i class="fas fa-check-circle"></i> Glaucoma & Cataract Treatment</li>
+                                <li><i class="fas fa-check-circle"></i> LASIK & Refractive Surgery</li>
+                                <li><i class="fas fa-check-circle"></i> Diabetic Eye Care</li>
+                                <li><i class="fas fa-check-circle"></i> Pediatric Eye Care</li>
+                            </ul>
+                            <a href="index.html#appointment" class="btn-book-service">Book Appointment <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+         
+            <div class="service-item" data-aos="fade-up">
+                <div class="row align-items-center">
+                    <div class="col-lg-5">
+                        <div class="service-card-large">
+                            <div class="service-img">
+                                <i class="fas fa-hand-holding-heart"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-7">
+                        <div class="service-content">
+                            <h3>Physiotherapy & Rehabilitation</h3>
+                            <p class="service-description">Professional physical therapy to help you recover from injuries, manage pain, and improve mobility.</p>
+                            <ul class="feature-list">
+                                <li><i class="fas fa-check-circle"></i> Sports Injury Rehabilitation</li>
+                                <li><i class="fas fa-check-circle"></i> Back & Neck Pain Treatment</li>
+                                <li><i class="fas fa-check-circle"></i> Post-Surgery Rehabilitation</li>
+                                <li><i class="fas fa-check-circle"></i> Arthritis Management</li>
+                                <li><i class="fas fa-check-circle"></i> Geriatric Physiotherapy</li>
+                            </ul>
+                            <a href="index.html#appointment" class="btn-book-service">Book Appointment <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+       
+            <div class="service-item" data-aos="fade-up">
+                <div class="row align-items-center flex-row-reverse">
+                    <div class="col-lg-5">
+                        <div class="service-card-large">
+                            <div class="service-img">
+                                <i class="fas fa-microscope"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-7">
+                        <div class="service-content">
+                            <h3>Lab Tests & Diagnostics</h3>
+                            <p class="service-description">State-of-the-art diagnostic services with accurate and quick results. Our laboratory is equipped with the latest technology.</p>
+                            <ul class="feature-list">
+                                <li><i class="fas fa-check-circle"></i> Blood Tests (Complete Blood Count, Lipid Profile)</li>
+                                <li><i class="fas fa-check-circle"></i> X-Ray & Digital Imaging</li>
+                                <li><i class="fas fa-check-circle"></i> Ultrasound & ECG</li>
+                                <li><i class="fas fa-check-circle"></i> Pathology & Histopathology</li>
+                                <li><i class="fas fa-check-circle"></i> COVID-19 & Allergy Testing</li>
+                            </ul>
+                            <a href="index.html#appointment" class="btn-book-service">Book Appointment <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="why-choose-us">
+        <div class="container">
+            <h2 class="text-center mb-5" style="font-size: 2.5rem; font-weight: 800; color: var(--dark);" data-aos="fade-up">Why Choose Madison Clinic?</h2>
+            <div class="row">
+                <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="100">
+                    <div class="benefit-card">
+                        <div class="benefit-icon"><i class="fas fa-user-md"></i></div>
+                        <h4>Expert Doctors</h4>
+                        <p>15+ highly qualified specialists with years of experience</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="200">
+                    <div class="benefit-card">
+                        <div class="benefit-icon"><i class="fas fa-microscope"></i></div>
+                        <h4>Modern Equipment</h4>
+                        <p>State-of-the-art technology for accurate diagnosis</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="300">
+                    <div class="benefit-card">
+                        <div class="benefit-icon"><i class="fas fa-clock"></i></div>
+                        <h4>24/7 Emergency</h4>
+                        <p>Round-the-clock emergency care services</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="400">
+                    <div class="benefit-card">
+                        <div class="benefit-icon"><i class="fas fa-smile"></i></div>
+                        <h4>Patient First</h4>
+                        <p>Compassionate care with personalized attention</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <section class="cta-section">
+        <div class="container" data-aos="fade-up">
+            <h2>Ready to Experience Quality Healthcare?</h2>
+            <p>Book your appointment today and take the first step towards better health</p>
+            <a href="index.html#appointment" class="btn-cta">Book Appointment Now <i class="fas fa-calendar-check"></i></a>
+        </div>
+    </section>
+
+  
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <h3 class="mb-3">Madison<span style="color: var(--accent);">Clinic</span></h3>
+                    <p>Your trusted healthcare partner in Madison, Wisconsin since 2010. Providing quality medical care with compassion and excellence.</p>
+                    <div class="mt-3">
+                        <a href="#" class="text-white me-3"><i class="fab fa-facebook fa-lg"></i></a>
+                        <a href="#" class="text-white me-3"><i class="fab fa-instagram fa-lg"></i></a>
+                        <a href="#" class="text-white me-3"><i class="fab fa-twitter fa-lg"></i></a>
+                        <a href="#" class="text-white"><i class="fab fa-linkedin fa-lg"></i></a>
+                    </div>
+                </div>
+                <div class="col-md-2 mb-4">
+                    <h5>Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="index.html" class="text-white text-decoration-none">Home</a></li>
+                        <li><a href="services.html" class="text-white text-decoration-none">Services</a></li>
+                        <li><a href="products.html" class="text-white text-decoration-none">Products</a></li>
+                        <li><a href="doctors.html" class="text-white text-decoration-none">Doctors</a></li>
+                        <li><a href="about.html" class="text-white text-decoration-none">About</a></li>
+                        <li><a href="contact.html" class="text-white text-decoration-none">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3 mb-4">
+                    <h5>Working Hours</h5>
+                    <p>Mon-Sat: 9AM - 8PM<br>Sunday: Closed<br>Emergency: 24/7</p>
+                </div>
+                <div class="col-md-3 mb-4">
+                    <h5>Contact Info</h5>
+                    <p><i class="fas fa-phone"></i> +1 (608) 555-0123<br>
+                    <i class="fas fa-envelope"></i> info@madisonclinic.com<br>
+                    <i class="fas fa-map-marker-alt"></i> 123 Medical Avenue, Madison, WI</p>
+                </div>
+            </div>
+            <hr class="mt-3">
+            <p class="text-center mb-0">&copy; 2024 Madison Multi-Specialty Clinic, Madison, Wisconsin. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+       
+        AOS.init({
+            duration: 800,
+            once: true
+        });
+
+        $(document).ready(function() {
+            // Navbar scroll effect
+            $(window).scroll(function() {
+                if ($(this).scrollTop() > 50) {
+                    $('.navbar').addClass('scrolled');
+                    $('#backToTop').fadeIn();
+                } else {
+                    $('.navbar').removeClass('scrolled');
+                    $('#backToTop').fadeOut();
+                }
+            });
+
+       
+            $('#backToTop').click(function() {
+                $('html, body').animate({scrollTop: 0}, 500);
+            });
+        });
+    </script>
+</body>
+</html>

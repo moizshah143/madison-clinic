@@ -1,0 +1,866 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Madison Multi-Specialty Clinic</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+   
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            overflow-x: hidden;
+        }
+
+        :root {
+            --primary: #2c7da0;
+            --secondary: #61a5c2;
+            --dark: #1f3e48;
+            --light: #e0fbfc;
+            --accent: #ee6c4d;
+            --success: #2a9d8f;
+            --gradient: linear-gradient(135deg, var(--primary), var(--secondary));
+            --gradient-accent: linear-gradient(135deg, var(--accent), #e76f51);
+        }
+
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+        ::-webkit-scrollbar-track {
+            background: var(--light);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: var(--primary);
+            border-radius: 10px;
+        }
+
+     
+        .navbar {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            padding: 15px 0;
+        }
+
+        .navbar.scrolled {
+            padding: 10px 0;
+            background: white !important;
+            box-shadow: 0 5px 30px rgba(0,0,0,0.15);
+        }
+
+        .navbar-brand {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--primary);
+            letter-spacing: -0.5px;
+        }
+
+        .navbar-brand span {
+            color: var(--accent);
+        }
+
+        .nav-link {
+            font-weight: 500;
+            margin: 0 12px;
+            transition: all 0.3s;
+            position: relative;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent);
+            transition: width 0.3s;
+        }
+
+        .nav-link:hover::after,
+        .nav-link.active::after {
+            width: 100%;
+        }
+
+        .nav-link:hover {
+            color: var(--accent) !important;
+        }
+
+        .nav-link.active {
+            color: var(--accent) !important;
+            font-weight: 600;
+        }
+
+        .emergency-btn {
+            background: #dc3545;
+            color: white;
+            padding: 10px 25px;
+            border-radius: 50px;
+            font-weight: 600;
+            animation: pulse 2s infinite;
+            transition: all 0.3s;
+        }
+
+        .emergency-btn:hover {
+            background: #c82333;
+            color: white;
+            transform: scale(1.05);
+        }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(220, 53, 69, 0.7); }
+            70% { box-shadow: 0 0 0 15px rgba(220, 53, 69, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(220, 53, 69, 0); }
+        }
+
+        .page-header {
+            background: var(--gradient);
+            color: white;
+            padding: 120px 0 80px;
+            margin-top: 76px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .page-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="rgba(255,255,255,0.1)" d="M0,96L48,112C96,128,192,160,288,160C384,160,480,128,576,122.7C672,117,768,139,864,154.7C960,171,1056,181,1152,165.3C1248,149,1344,107,1392,85.3L1440,64L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>') no-repeat bottom;
+            background-size: cover;
+            opacity: 0.3;
+        }
+
+        .page-header h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+        }
+
+        .page-header p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .about-story {
+            padding: 80px 0;
+        }
+
+        .about-img {
+            background: var(--gradient);
+            padding: 60px;
+            border-radius: 20px;
+            text-align: center;
+        }
+
+        .about-img i {
+            font-size: 8rem;
+            color: white;
+        }
+
+        .story-text h2 {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--dark);
+            margin-bottom: 20px;
+        }
+
+        .story-text p {
+            color: #555;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+
+        .mission-vision {
+            padding: 80px 0;
+            background: #f8f9fa;
+        }
+
+        .mv-card {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            text-align: center;
+            transition: all 0.4s;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            height: 100%;
+        }
+
+        .mv-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .mv-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--gradient);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+        }
+
+        .mv-icon i {
+            font-size: 2.5rem;
+            color: white;
+        }
+
+        .mv-card h3 {
+            color: var(--dark);
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .mv-card p {
+            color: #555;
+            line-height: 1.7;
+        }
+
+       
+        .values-section {
+            padding: 80px 0;
+        }
+
+        .value-card {
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            text-align: center;
+            transition: all 0.3s;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+            margin-bottom: 30px;
+        }
+
+        .value-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+
+        .value-icon {
+            width: 70px;
+            height: 70px;
+            background: var(--gradient);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+        }
+
+        .value-icon i {
+            font-size: 2rem;
+            color: white;
+        }
+
+        .value-card h4 {
+            color: var(--dark);
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        .stats-section {
+            padding: 80px 0;
+            background: var(--gradient);
+            color: white;
+        }
+
+        .stat-box {
+            text-align: center;
+            padding: 20px;
+        }
+
+        .stat-number {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 10px;
+        }
+
+        .stat-label {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+   
+        .timeline-section {
+            padding: 80px 0;
+            background: #f8f9fa;
+        }
+
+        .timeline-item {
+            display: flex;
+            margin-bottom: 40px;
+            position: relative;
+        }
+
+        .timeline-year {
+            width: 100px;
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--primary);
+        }
+
+        .timeline-content {
+            flex: 1;
+            background: white;
+            padding: 20px 25px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+            margin-left: 20px;
+        }
+
+        .timeline-content h4 {
+            color: var(--dark);
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .timeline-content p {
+            color: #555;
+            margin: 0;
+        }
+
+       
+        .team-section {
+            padding: 80px 0;
+        }
+
+        .team-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            transition: all 0.4s;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .team-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .team-img {
+            background: var(--gradient);
+            padding: 40px;
+        }
+
+        .team-img i {
+            font-size: 4rem;
+            color: white;
+        }
+
+        .team-info {
+            padding: 20px;
+        }
+
+        .team-info h4 {
+            color: var(--primary);
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .team-role {
+            color: var(--accent);
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+    
+        .cta-section {
+            padding: 80px 0;
+            background: var(--gradient);
+            color: white;
+            text-align: center;
+        }
+
+        .cta-section h2 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+        }
+
+        .btn-cta {
+            background: white;
+            color: var(--primary);
+            padding: 15px 40px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            display: inline-block;
+            transition: all 0.3s;
+            margin-top: 20px;
+        }
+
+        .btn-cta:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 60px 0 30px;
+        }
+
+      
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: var(--accent);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 1000;
+            transition: all 0.3s;
+        }
+
+        .back-to-top:hover {
+            background: var(--primary);
+            transform: scale(1.1);
+        }
+
+   
+        .live-chat {
+            position: fixed;
+            bottom: 30px;
+            left: 30px;
+            background: #25D366;
+            color: white;
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 1000;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+            transition: all 0.3s;
+            animation: pulse 2s infinite;
+        }
+
+        .live-chat:hover {
+            transform: scale(1.1);
+        }
+
+        .live-chat i {
+            font-size: 1.8rem;
+        }
+
+        @media (max-width: 768px) {
+            .page-header h1 { font-size: 2rem; }
+            .stat-number { font-size: 2rem; }
+            .timeline-year { width: 70px; font-size: 1.2rem; }
+            .cta-section h2 { font-size: 1.8rem; }
+        }
+    </style>
+</head>
+<body>
+
+   
+    <div class="live-chat" onclick="window.open('https://wa.me/16085551234', '_blank')">
+        <i class="fab fa-whatsapp"></i>
+    </div>
+
+   
+    <div class="back-to-top" id="backToTop">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+
+    <nav class="navbar navbar-expand-lg fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">Madicine<span>Clinic</span></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="services.html">Services</a></li>
+                    <li class="nav-item"><a class="nav-link" href="products.html">Products</a></li>
+                    <li class="nav-item"><a class="nav-link" href="doctors.html">Doctors</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="about.html">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+                </ul>
+                <a href="tel:+16085551234" class="btn emergency-btn ms-3">
+                    <i class="fas fa-phone-alt"></i> 24/7 Emergency
+                </a>
+            </div>
+        </div>
+    </nav>
+
+  
+    <section class="page-header">
+        <div class="container">
+            <h1 data-aos="fade-up">About Madison Clinic</h1>
+            <p data-aos="fade-up" data-aos-delay="100">Serving the Madison community with excellence since 2010</p>
+        </div>
+    </section>
+
+   
+    <section class="about-story">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6" data-aos="fade-right">
+                    <div class="about-img">
+                        <i class="fas fa-hospital-user"></i>
+                    </div>
+                </div>
+                <div class="col-lg-6" data-aos="fade-left">
+                    <div class="story-text">
+                        <h2>Our Story</h2>
+                        <p>Founded in 2010, Madison Multi-Specialty Clinic began with a simple yet powerful vision: to provide accessible, high-quality healthcare to every resident of Madison, Wisconsin. What started as a small clinic with just 3 doctors has grown into a premier healthcare facility serving over 50,000 patients annually.</p>
+                        <p>Over the past 14 years, we have expanded our services, brought on board 15+ expert physicians, and invested in state-of-the-art medical equipment. Today, we are proud to be one of Madison's most trusted healthcare providers, offering comprehensive medical services under one roof.</p>
+                        <p>Our journey has been guided by our commitment to patient-centered care, innovation, and community service. We believe that everyone deserves access to quality healthcare, and we strive to make that a reality every single day.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+   
+    <section class="mission-vision">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 mb-4" data-aos="fade-up" data-aos-delay="100">
+                    <div class="mv-card">
+                        <div class="mv-icon">
+                            <i class="fas fa-bullseye"></i>
+                        </div>
+                        <h3>Our Mission</h3>
+                        <p>To provide compassionate, patient-centered healthcare services of the highest quality, ensuring every individual receives personalized attention and evidence-based treatment in a welcoming environment. We are committed to making healthcare accessible, affordable, and effective for all members of our community.</p>
+                    </div>
+                </div>
+                <div class="col-lg-6 mb-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="mv-card">
+                        <div class="mv-icon">
+                            <i class="fas fa-eye"></i>
+                        </div>
+                        <h3>Our Vision</h3>
+                        <p>To be the leading healthcare provider in Madison, setting benchmarks for medical excellence, innovation, and patient satisfaction. We envision a community where every individual has access to world-class healthcare services, and where health and wellness are prioritized at every level.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <section class="values-section">
+        <div class="container">
+            <h2 class="text-center mb-5" style="font-size: 2.5rem; font-weight: 800; color: var(--dark);" data-aos="fade-up">Our Core Values</h2>
+            <div class="row">
+                <div class="col-md-3 col-sm-6" data-aos="fade-up" data-aos-delay="100">
+                    <div class="value-card">
+                        <div class="value-icon">
+                            <i class="fas fa-heartbeat"></i>
+                        </div>
+                        <h4>Compassion</h4>
+                        <p>We treat every patient with empathy, respect, and genuine care.</p>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6" data-aos="fade-up" data-aos-delay="150">
+                    <div class="value-card">
+                        <div class="value-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <h4>Excellence</h4>
+                        <p>We strive for the highest standards in medical care and service.</p>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6" data-aos="fade-up" data-aos-delay="200">
+                    <div class="value-card">
+                        <div class="value-icon">
+                            <i class="fas fa-handshake"></i>
+                        </div>
+                        <h4>Integrity</h4>
+                        <p>We operate with honesty, transparency, and ethical practices.</p>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6" data-aos="fade-up" data-aos-delay="250">
+                    <div class="value-card">
+                        <div class="value-icon">
+                            <i class="fas fa-lightbulb"></i>
+                        </div>
+                        <h4>Innovation</h4>
+                        <p>We embrace new technologies and treatment methods.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+   
+    <section class="stats-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3 col-6" data-aos="fade-up" data-aos-delay="100">
+                    <div class="stat-box">
+                        <div class="stat-number">14+</div>
+                        <div class="stat-label">Years of Excellence</div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6" data-aos="fade-up" data-aos-delay="150">
+                    <div class="stat-box">
+                        <div class="stat-number">15+</div>
+                        <div class="stat-label">Expert Doctors</div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6" data-aos="fade-up" data-aos-delay="200">
+                    <div class="stat-box">
+                        <div class="stat-number">50K+</div>
+                        <div class="stat-label">Happy Patients</div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6" data-aos="fade-up" data-aos-delay="250">
+                    <div class="stat-box">
+                        <div class="stat-number">24/7</div>
+                        <div class="stat-label">Emergency Care</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <section class="timeline-section">
+        <div class="container">
+            <h2 class="text-center mb-5" style="font-size: 2.5rem; font-weight: 800; color: var(--dark);" data-aos="fade-up">Our Journey</h2>
+            <div class="timeline">
+                <div class="timeline-item" data-aos="fade-up" data-aos-delay="100">
+                    <div class="timeline-year">2010</div>
+                    <div class="timeline-content">
+                        <h4>The Beginning</h4>
+                        <p>Madison Clinic was founded with 3 doctors and a vision to serve the community.</p>
+                    </div>
+                </div>
+                <div class="timeline-item" data-aos="fade-up" data-aos-delay="150">
+                    <div class="timeline-year">2013</div>
+                    <div class="timeline-content">
+                        <h4>Expansion</h4>
+                        <p>Moved to our current 10,000 sq ft facility in downtown Madison.</p>
+                    </div>
+                </div>
+                <div class="timeline-item" data-aos="fade-up" data-aos-delay="200">
+                    <div class="timeline-year">2016</div>
+                    <div class="timeline-content">
+                        <h4>Multi-Specialty</h4>
+                        <p>Became a full-fledged multi-specialty clinic with 8 departments.</p>
+                    </div>
+                </div>
+                <div class="timeline-item" data-aos="fade-up" data-aos-delay="250">
+                    <div class="timeline-year">2020</div>
+                    <div class="timeline-content">
+                        <h4>Digital Transformation</h4>
+                        <p>Launched online appointment system and telemedicine services.</p>
+                    </div>
+                </div>
+                <div class="timeline-item" data-aos="fade-up" data-aos-delay="300">
+                    <div class="timeline-year">2024</div>
+                    <div class="timeline-content">
+                        <h4>Today</h4>
+                        <p>15+ expert doctors, 50,000+ happy patients, serving with excellence.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+   
+    <section class="team-section">
+        <div class="container">
+            <h2 class="text-center mb-5" style="font-size: 2.5rem; font-weight: 800; color: var(--dark);" data-aos="fade-up">Leadership Team</h2>
+            <div class="row">
+                <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="100">
+                    <div class="team-card">
+                        <div class="team-img">
+                            <i class="fas fa-user-tie"></i>
+                        </div>
+                        <div class="team-info">
+                            <h4>Dr. Robert Anderson</h4>
+                            <div class="team-role">Founder & Medical Director</div>
+                            <p>MD, PhD - 25+ years experience</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="150">
+                    <div class="team-card">
+                        <div class="team-img">
+                            <i class="fas fa-user-tie"></i>
+                        </div>
+                        <div class="team-info">
+                            <h4>Jennifer Martinez</h4>
+                            <div class="team-role">Administrative Director</div>
+                            <p>MBA, MHA - 15+ years experience</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="200">
+                    <div class="team-card">
+                        <div class="team-img">
+                            <i class="fas fa-user-tie"></i>
+                        </div>
+                        <div class="team-info">
+                            <h4>Dr. Sarah Johnson</h4>
+                            <div class="team-role">Chief of Staff</div>
+                            <p>MD, FACP - 15+ years experience</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="250">
+                    <div class="team-card">
+                        <div class="team-img">
+                            <i class="fas fa-user-tie"></i>
+                        </div>
+                        <div class="team-info">
+                            <h4>Michael Chen</h4>
+                            <div class="team-role">Operations Manager</div>
+                            <p>MS Healthcare Admin - 12+ years</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <section class="values-section" style="background: #f8f9fa;">
+        <div class="container">
+            <h2 class="text-center mb-5" style="font-size: 2.5rem; font-weight: 800; color: var(--dark);" data-aos="fade-up">Why Choose Madison Clinic?</h2>
+            <div class="row">
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+                    <div class="value-card">
+                        <div class="value-icon">
+                            <i class="fas fa-trophy"></i>
+                        </div>
+                        <h4>Award-Winning Care</h4>
+                        <p>Recognized as one of Madison's best clinics for 5 consecutive years.</p>
+                    </div>
+                </div>
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="150">
+                    <div class="value-card">
+                        <div class="value-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <h4>Minimal Wait Times</h4>
+                        <p>Same-day appointments available with average wait time under 15 minutes.</p>
+                    </div>
+                </div>
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="value-card">
+                        <div class="value-icon">
+                            <i class="fas fa-credit-card"></i>
+                        </div>
+                        <h4>Insurance Accepted</h4>
+                        <p>We accept all major insurance plans and offer affordable payment options.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+  
+    <section class="cta-section">
+        <div class="container" data-aos="fade-up">
+            <h2>Join Our Healthcare Family</h2>
+            <p>Experience compassionate, expert care at Madison Clinic</p>
+            <a href="index.html#appointment" class="btn-cta">Book Your Appointment Today <i class="fas fa-calendar-check"></i></a>
+        </div>
+    </section>
+
+      <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <h3 class="mb-3">Madison<span style="color: var(--accent);">Clinic</span></h3>
+                    <p>Your trusted healthcare partner in Madison, Wisconsin since 2010. Providing quality medical care with compassion and excellence.</p>
+                    <div class="mt-3">
+                        <a href="#" class="text-white me-3"><i class="fab fa-facebook fa-lg"></i></a>
+                        <a href="#" class="text-white me-3"><i class="fab fa-instagram fa-lg"></i></a>
+                        <a href="#" class="text-white me-3"><i class="fab fa-twitter fa-lg"></i></a>
+                        <a href="#" class="text-white"><i class="fab fa-linkedin fa-lg"></i></a>
+                    </div>
+                </div>
+                <div class="col-md-2 mb-4">
+                    <h5>Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="index.html" class="text-white text-decoration-none">Home</a></li>
+                        <li><a href="services.html" class="text-white text-decoration-none">Services</a></li>
+                        <li><a href="products.html" class="text-white text-decoration-none">Products</a></li>
+                        <li><a href="doctors.html" class="text-white text-decoration-none">Doctors</a></li>
+                        <li><a href="about.html" class="text-white text-decoration-none">About</a></li>
+                        <li><a href="contact.html" class="text-white text-decoration-none">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3 mb-4">
+                    <h5>Working Hours</h5>
+                    <p>Mon-Sat: 9AM - 8PM<br>Sunday: Closed<br>Emergency: 24/7</p>
+                </div>
+                <div class="col-md-3 mb-4">
+                    <h5>Contact Info</h5>
+                    <p><i class="fas fa-phone"></i> +1 (608) 555-0123<br>
+                    <i class="fas fa-envelope"></i> info@madisonclinic.com<br>
+                    <i class="fas fa-map-marker-alt"></i> 123 Medical Avenue, Madison, WI</p>
+                </div>
+            </div>
+            <hr class="mt-3">
+            <p class="text-center mb-0">&copy; 2024 Madison Multi-Specialty Clinic, Madison, Wisconsin. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+       
+        AOS.init({
+            duration: 800,
+            once: true
+        });
+
+        $(document).ready(function() {
+            // Navbar scroll effect
+            $(window).scroll(function() {
+                if ($(this).scrollTop() > 50) {
+                    $('.navbar').addClass('scrolled');
+                    $('#backToTop').fadeIn();
+                } else {
+                    $('.navbar').removeClass('scrolled');
+                    $('#backToTop').fadeOut();
+                }
+            });
+
+          
+            $('#backToTop').click(function() {
+                $('html, body').animate({scrollTop: 0}, 500);
+            });
+        });
+    </script>
+</body>
+</html>

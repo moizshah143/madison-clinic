@@ -1,0 +1,766 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Madison Multi-Specialty Clinic | Best Medical Care in Madison</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+   
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+ 
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            overflow-x: hidden;
+        }
+
+        :root {
+            --primary: #2c7da0;
+            --secondary: #61a5c2;
+            --dark: #1f3e48;
+            --light: #e0fbfc;
+            --accent: #ee6c4d;
+            --success: #2a9d8f;
+        }
+
+        .navbar {
+            background: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            padding: 15px 0;
+        }
+
+        .navbar.scrolled {
+            padding: 10px 0;
+            background: white !important;
+        }
+
+        .navbar-brand {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .navbar-brand span {
+            color: var(--accent);
+        }
+
+        .nav-link {
+            font-weight: 500;
+            margin: 0 10px;
+            transition: all 0.3s;
+        }
+
+        .nav-link:hover {
+            color: var(--accent) !important;
+        }
+
+        .emergency-btn {
+            background: #dc3545;
+            color: white;
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-weight: 600;
+            animation: pulse 2s infinite;
+        }
+
+        .emergency-btn:hover {
+            background: #c82333;
+            color: white;
+        }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(220, 53, 69, 0.7); }
+            70% { box-shadow: 0 0 0 10px rgba(220, 53, 69, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(220, 53, 69, 0); }
+        }
+
+        .hero {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 120px 0 80px;
+            margin-top: 76px;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .services-section, .products-section {
+            padding: 80px 0;
+            background: #f8f9fa;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 50px;
+            color: var(--dark);
+        }
+
+        .service-card, .product-card {
+            background: white;
+            padding: 30px 20px;
+            border-radius: 15px;
+            text-align: center;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+        }
+
+        .service-card:hover, .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+        }
+
+        .service-icon, .product-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+        }
+
+        .service-icon i, .product-icon i {
+            font-size: 2.5rem;
+            color: white;
+        }
+
+        .product-price {
+            color: var(--accent);
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin: 10px 0;
+        }
+
+        .btn-buy {
+            background: var(--primary);
+            color: white;
+            padding: 8px 25px;
+            border-radius: 25px;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 10px;
+            transition: all 0.3s;
+        }
+
+        .btn-buy:hover {
+            background: var(--accent);
+            color: white;
+        }
+
+        .doctors-section {
+            padding: 80px 0;
+        }
+
+        .doctor-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: all 0.3s;
+            margin-bottom: 30px;
+        }
+
+        .doctor-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .doctor-img {
+            width: 100%;
+            height: 250px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .doctor-img i {
+            font-size: 5rem;
+            color: white;
+        }
+
+        .doctor-info {
+            padding: 20px;
+            text-align: center;
+        }
+
+        .doctor-info h4 {
+            color: var(--primary);
+            margin-bottom: 5px;
+        }
+
+        .appointment-section {
+            padding: 80px 0;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+        }
+
+        .appointment-form {
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            color: #333;
+        }
+
+        .form-control, .form-select {
+            padding: 12px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+        }
+
+        .btn-submit {
+            background: var(--accent);
+            color: white;
+            padding: 12px 40px;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            width: 100%;
+        }
+
+        .about-section {
+            padding: 80px 0;
+            background: #f8f9fa;
+        }
+
+        .contact-section {
+            padding: 80px 0;
+        }
+
+        .contact-info {
+            background: var(--primary);
+            padding: 30px;
+            border-radius: 15px;
+            color: white;
+            height: 100%;
+        }
+
+        .madison-badge {
+            background: var(--accent);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            display: inline-block;
+            margin-bottom: 15px;
+        }
+
+        .madison-stats {
+            background: white;
+            padding: 20px;
+            border-radius: 15px;
+            margin-top: 30px;
+        }
+
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 40px 0 20px;
+        }
+
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: var(--accent);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 1000;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2rem; }
+            .section-title { font-size: 1.8rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="back-to-top" id="backToTop">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+
+    
+    <nav class="navbar navbar-expand-lg fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">Madicine <span>Clinic</span></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="services.html">Services</a></li>
+                    <li class="nav-item"><a class="nav-link" href="products.html">Products</a></li>
+                    <li class="nav-item"><a class="nav-link" href="doctors.html">Doctors</a></li>
+                    <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+                </ul>
+                <a href="tel:+16085551234" class="btn emergency-btn ms-3">
+                    <i class="fas fa-phone-alt"></i> 24/7 Emergency
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <span class="madison-badge"><i class="fas fa-map-marker-alt"></i> Madison, Wisconsin - Capital City</span>
+                    <h1>Your Health, Our Priority</h1>
+                    <p>Madison Multi-Specialty Clinic provides comprehensive healthcare services with experienced doctors and modern facilities. Proudly serving the Madison community since 2010.</p>
+                    <a href="#appointment" class="btn btn-light btn-lg">Book Appointment <i class="fas fa-calendar-check"></i></a>
+                </div>
+                <div class="col-lg-6 text-center">
+                    <i class="fas fa-hospital-user" style="font-size: 12rem; opacity: 0.2;"></i>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <section style="padding: 60px 0; background: #e8f4f8;">
+        <div class="container">
+            <h2 class="section-title">Welcome to Madison, Wisconsin</h2>
+            <div class="row">
+                <div class="col-lg-4">
+                    <div class="text-center p-3">
+                        <i class="fas fa-university" style="font-size: 3rem; color: var(--primary);"></i>
+                        <h4 class="mt-3">State Capital</h4>
+                        <p>Madison is the capital city of Wisconsin, known for its beautiful Capitol building</p>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="text-center p-3">
+                        <i class="fas fa-water" style="font-size: 3rem; color: var(--primary);"></i>
+                        <h4 class="mt-3">Four Lakes</h4>
+                        <p>Madison is famous for its 4 beautiful lakes: Mendota, Monona, Wingra, Kegonsa</p>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="text-center p-3">
+                        <i class="fas fa-graduation-cap" style="font-size: 3rem; color: var(--primary);"></i>
+                        <h4 class="mt-3">UW Madison</h4>
+                        <p>Home to University of Wisconsin-Madison, one of America's top public universities</p>
+                    </div>
+                </div>
+            </div>
+            <div class="madison-stats">
+                <div class="row text-center">
+                    <div class="col-md-3">
+                        <h3 class="text-primary">270K+</h3>
+                        <p>Population</p>
+                    </div>
+                    <div class="col-md-3">
+                        <h3 class="text-primary">#1</h3>
+                        <p>Best Place to Live in US (2023)</p>
+                    </div>
+                    <div class="col-md-3">
+                        <h3 class="text-primary">280+</h3>
+                        <p>Parks & Trails</p>
+                    </div>
+                    <div class="col-md-3">
+                        <h3 class="text-primary">1848</h3>
+                        <p>Year Founded</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    
+    <section id="services" class="services-section">
+        <div class="container">
+            <h2 class="section-title">Our Medical Services</h2>
+            <div class="row">
+                <div class="col-lg-3 col-md-6">
+                    <div class="service-card">
+                        <div class="service-icon"><i class="fas fa-stethoscope"></i></div>
+                        <h4>General Physician</h4>
+                        <p>Family medicine & routine checkups</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="service-card">
+                        <div class="service-icon"><i class="fas fa-tooth"></i></div>
+                        <h4>Dental Care</h4>
+                        <p>Complete dental treatments</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="service-card">
+                        <div class="service-icon"><i class="fas fa-allergies"></i></div>
+                        <h4>Skin & Dermatology</h4>
+                        <p>Skin care & treatments</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="service-card">
+                        <div class="service-icon"><i class="fas fa-child"></i></div>
+                        <h4>Child Care</h4>
+                        <p>Pediatric specialists</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="service-card">
+                        <div class="service-icon"><i class="fas fa-female"></i></div>
+                        <h4>Women's Health</h4>
+                        <p>Gynecology & maternity</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="service-card">
+                        <div class="service-icon"><i class="fas fa-eye"></i></div>
+                        <h4>Eye Care</h4>
+                        <p>Ophthalmology services</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="service-card">
+                        <div class="service-icon"><i class="fas fa-hand-holding-heart"></i></div>
+                        <h4>Physiotherapy</h4>
+                        <p>Rehabilitation & therapy</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="service-card">
+                        <div class="service-icon"><i class="fas fa-microscope"></i></div>
+                        <h4>Lab Tests</h4>
+                        <p>Diagnostic services</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="products" class="products-section">
+        <div class="container">
+            <h2 class="section-title">Our Medical Products</h2>
+            <div class="row">
+                <div class="col-lg-3 col-md-6">
+                    <div class="product-card">
+                        <div class="product-icon"><i class="fas fa-capsules"></i></div>
+                        <h4>Multivitamins</h4>
+                        <p>Daily essential nutrients for overall health</p>
+                        <div class="product-price">$24.99</div>
+                        <a href="#" class="btn-buy">Shop Now <i class="fas fa-shopping-cart"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="product-card">
+                        <div class="product-icon"><i class="fas fa-heartbeat"></i></div>
+                        <h4>Blood Pressure Monitor</h4>
+                        <p>Digital BP monitor for home use</p>
+                        <div class="product-price">$45.99</div>
+                        <a href="#" class="btn-buy">Shop Now <i class="fas fa-shopping-cart"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="product-card">
+                        <div class="product-icon"><i class="fas fa-procedures"></i></div>
+                        <h4>Orthopedic Support</h4>
+                        <p>Knee & back support belts</p>
+                        <div class="product-price">$29.99</div>
+                        <a href="#" class="btn-buy">Shop Now <i class="fas fa-shopping-cart"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="product-card">
+                        <div class="product-icon"><i class="fas fa-lungs"></i></div>
+                        <h4>Nebulizer Machine</h4>
+                        <p>For respiratory treatments</p>
+                        <div class="product-price">$89.99</div>
+                        <a href="#" class="btn-buy">Shop Now <i class="fas fa-shopping-cart"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="product-card">
+                        <div class="product-icon"><i class="fas fa-temperature-low"></i></div>
+                        <h4>Digital Thermometer</h4>
+                        <p>Fast & accurate reading</p>
+                        <div class="product-price">$15.99</div>
+                        <a href="#" class="btn-buy">Shop Now <i class="fas fa-shopping-cart"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="product-card">
+                        <div class="product-icon"><i class="fas fa-band-aid"></i></div>
+                        <h4>First Aid Kit</h4>
+                        <p>Complete emergency kit</p>
+                        <div class="product-price">$34.99</div>
+                        <a href="#" class="btn-buy">Shop Now <i class="fas fa-shopping-cart"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="product-card">
+                        <div class="product-icon"><i class="fas fa-apple-alt"></i></div>
+                        <h4>Protein Supplements</h4>
+                        <p>Whey protein for fitness</p>
+                        <div class="product-price">$54.99</div>
+                        <a href="#" class="btn-buy">Shop Now <i class="fas fa-shopping-cart"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="product-card">
+                        <div class="product-icon"><i class="fas fa-eye"></i></div>
+                        <h4>Reading Glasses</h4>
+                        <p>Anti-blue light glasses</p>
+                        <div class="product-price">$19.99</div>
+                        <a href="#" class="btn-buy">Shop Now <i class="fas fa-shopping-cart"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    
+    <section id="doctors" class="doctors-section">
+        <div class="container">
+            <h2 class="section-title">Our Expert Doctors in Madison</h2>
+            <div class="row">
+                <div class="col-lg-3 col-md-6">
+                    <div class="doctor-card">
+                        <div class="doctor-img"><i class="fas fa-user-md"></i></div>
+                        <div class="doctor-info">
+                            <h4>Dr. Sarah Johnson</h4>
+                            <p>⭐ 4.9 • 15+ years</p>
+                            <small>General Physician - UW Madison</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="doctor-card">
+                        <div class="doctor-img"><i class="fas fa-user-md"></i></div>
+                        <div class="doctor-info">
+                            <h4>Dr. Michael Lee</h4>
+                            <p>⭐ 4.8 • 12+ years</p>
+                            <small>Dental Surgeon - Marquette</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="doctor-card">
+                        <div class="doctor-img"><i class="fas fa-user-md"></i></div>
+                        <div class="doctor-info">
+                            <h4>Dr. Emily Davis</h4>
+                            <p>⭐ 4.9 • 10+ years</p>
+                            <small>Dermatologist - UW Madison</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="doctor-card">
+                        <div class="doctor-img"><i class="fas fa-user-md"></i></div>
+                        <div class="doctor-info">
+                            <h4>Dr. James Wilson</h4>
+                            <p>⭐ 4.9 • 18+ years</p>
+                            <small>Pediatrician - Johns Hopkins</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+   
+    <section id="appointment" class="appointment-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6">
+                    <h2>Book Your Appointment</h2>
+                    <p>Experience quality healthcare at Madison Clinic. Schedule your visit online for a hassle-free consultation.</p>
+                    <h4 class="mt-4">Clinic Hours:</h4>
+                    <p><i class="fas fa-clock"></i> Monday - Saturday: 9:00 AM - 8:00 PM<br>
+                    <i class="fas fa-clock"></i> Sunday: Closed</p>
+                    <h4>Emergency Contact:</h4>
+                    <p><i class="fas fa-phone-alt"></i> <strong>+1 (608) 555-0123</strong> (24/7 Available)</p>
+                    <h4> Location:</h4>
+                    <p>123 Medical Avenue, Downtown Madison, WI 53703</p>
+                    <h4> Near:</h4>
+                    <p>UW Hospital • Capitol Square • State Street</p>
+                </div>
+                <div class="col-lg-6">
+                    <div class="appointment-form">
+                        <h3 class="mb-4">Book Online</h3>
+                        <form id="appointmentForm">
+                            <input type="text" class="form-control" placeholder="Full Name" required>
+                            <input type="email" class="form-control" placeholder="Email" required>
+                            <input type="tel" class="form-control" placeholder="Phone Number" required>
+                            <select class="form-select">
+                                <option>Select Service</option>
+                                <option>General Physician</option>
+                                <option>Dental Care</option>
+                                <option>Skin/Dermatology</option>
+                                <option>Child Care</option>
+                                <option>Women's Health</option>
+                                <option>Eye Care</option>
+                                <option>Physiotherapy</option>
+                                <option>Lab Tests</option>
+                            </select>
+                            <input type="date" class="form-control" required>
+                            <button type="submit" class="btn-submit">Book Appointment <i class="fas fa-arrow-right"></i></button>
+                        </form>
+                        <div id="formMessage" class="mt-3 text-center"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+ 
+    <section id="about" class="about-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6">
+                    <h2 class="section-title text-start">About Madison Clinic</h2>
+                    <p><strong>Madison Multi-Specialty Clinic</strong> has been serving the Madison community with dedication and excellence since 2010.</p>
+                    <ul class="list-unstyled">
+                        <li><i class="fas fa-check-circle text-primary"></i> 14+ Years of Service in Madison</li>
+                        <li><i class="fas fa-check-circle text-primary"></i> 15+ Expert Doctors</li>
+                        <li><i class="fas fa-check-circle text-primary"></i> 50,000+ Happy Patients</li>
+                        <li><i class="fas fa-check-circle text-primary"></i> Modern Equipment & Technology</li>
+                        <li><i class="fas fa-check-circle text-primary"></i> Affordable Treatment Plans</li>
+                        <li><i class="fas fa-check-circle text-primary"></i> 24/7 Emergency Services</li>
+                    </ul>
+                </div>
+                <div class="col-lg-6">
+                    <div class="bg-white p-4 rounded shadow-sm">
+                        <h4>Why Choose Us?</h4>
+                        <p>Best Clinic in Madison<br>
+                         Award-Winning Doctors<br>
+                         State-of-the-art Facility<br>
+                         Insurance Accepted<br>
+                        Same-Day Appointments</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <section id="contact" class="contact-section">
+        <div class="container">
+            <h2 class="section-title">Contact Madison Clinic</h2>
+            <div class="row">
+                <div class="col-lg-5">
+                    <div class="contact-info">
+                        <h3 class="mb-4">Get in Touch</h3>
+                        <div class="contact-detail">
+                            <i class="fas fa-map-marker-alt"></i> 123 Medical Avenue, Madison, WI 53703
+                        </div>
+                        <div class="contact-detail">
+                            <i class="fas fa-phone"></i> +1 (608) 555-0123
+                        </div>
+                        <div class="contact-detail">
+                            <i class="fas fa-envelope"></i> info@madisonclinic.com
+                        </div>
+                        <div class="contact-detail">
+                            <i class="fab fa-whatsapp"></i> +1 (608) 555-0124 (WhatsApp)
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-7">
+                    <iframe 
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2916.123456789012!2d-89.384!3d43.073!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8806533ac3b5b5b5%3A0x4b4b4b4b4b4b4b4b!2sMadison%2C%20WI!5e0!3m2!1sen!2sus!4v1234567890123!5m2!1sen!2sus" 
+                        width="100%" 
+                        height="400" 
+                        style="border:0; border-radius: 15px;" 
+                        allowfullscreen="">
+                    </iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+   
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <h4>Madison Clinic</h4>
+                    <p>Your trusted healthcare partner in Madison, Wisconsin since 2010.</p>
+                </div>
+                <div class="col-md-4">
+                    <h5>Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#home" class="text-white text-decoration-none">Home</a></li>
+                        <li><a href="#services" class="text-white text-decoration-none">Services</a></li>
+                        <li><a href="#products" class="text-white text-decoration-none">Products</a></li>
+                        <li><a href="#doctors" class="text-white text-decoration-none">Doctors</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h5>Working Hours</h5>
+                    <p>Mon-Sat: 9AM - 8PM<br>Sunday: Closed<br>Emergency: 24/7</p>
+                </div>
+            </div>
+            <hr>
+            <p class="text-center mb-0">&copy; 2024 Madison Multi-Specialty Clinic, Madison, Wisconsin. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $(window).scroll(function() {
+                if ($(this).scrollTop() > 50) {
+                    $('.navbar').addClass('scrolled');
+                    $('#backToTop').fadeIn();
+                } else {
+                    $('.navbar').removeClass('scrolled');
+                    $('#backToTop').fadeOut();
+                }
+            });
+
+            $('#backToTop').click(function() {
+                $('html, body').animate({scrollTop: 0}, 500);
+            });
+
+            $('a[href^="#"]').on('click', function(event) {
+                var target = $(this.getAttribute('href'));
+                if (target.length) {
+                    event.preventDefault();
+                    $('html, body').stop().animate({
+                        scrollTop: target.offset().top - 80
+                    }, 1000);
+                }
+            });
+
+            $('#appointmentForm').submit(function(e) {
+                e.preventDefault();
+                $('#formMessage').html('<div class="alert alert-success">✓ Appointment booked successfully! We will contact you soon.</div>');
+                this.reset();
+                setTimeout(function() {
+                    $('#formMessage').fadeOut();
+                }, 3000);
+            });
+        });
+    </script>
+</body>
+</html>
